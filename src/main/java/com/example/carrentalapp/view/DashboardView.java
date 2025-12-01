@@ -19,13 +19,18 @@ public class DashboardView {
     private final Stage stage;
 
     private final CarManagementView carManagementView;
+    private final CustomerManagementView customerManagementView;
+    private final UserManagementView userManagementView;
 
     public DashboardView(User currentUser, Stage stage) {
         this.currentUser = currentUser;
         this.stage = stage;
 
         root = new BorderPane();
+
         carManagementView = new CarManagementView();
+        customerManagementView = new CustomerManagementView();
+        userManagementView = new UserManagementView();
 
         Label welcome = new Label("Welcome, " + currentUser.getUsername());
 
@@ -40,7 +45,9 @@ public class DashboardView {
         Button btnReports = new Button("Reports");
 
         btnCars.setOnAction(e -> root.setCenter(carManagementView.getRoot()));
-        // other buttons will be wired later
+        btnCustomers.setOnAction(e -> root.setCenter(customerManagementView.getRoot()));
+        btnUsers.setOnAction(e -> root.setCenter(userManagementView.getRoot()));
+        // rentals and reports will be wired later
 
         VBox menu = new VBox(10, btnCars, btnCustomers, btnRentals, btnUsers, btnReports);
         menu.setPadding(new Insets(10));
