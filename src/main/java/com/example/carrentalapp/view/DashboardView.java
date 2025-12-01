@@ -11,18 +11,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-// Simple dashboard after login
+// Dashboard after login
 public class DashboardView {
 
     private final BorderPane root;
     private final User currentUser;
     private final Stage stage;
 
+    private final CarManagementView carManagementView;
+
     public DashboardView(User currentUser, Stage stage) {
         this.currentUser = currentUser;
         this.stage = stage;
 
         root = new BorderPane();
+        carManagementView = new CarManagementView();
 
         Label welcome = new Label("Welcome, " + currentUser.getUsername());
 
@@ -36,6 +39,9 @@ public class DashboardView {
         Button btnUsers = new Button("Manage Users");
         Button btnReports = new Button("Reports");
 
+        btnCars.setOnAction(e -> root.setCenter(carManagementView.getRoot()));
+        // other buttons will be wired later
+
         VBox menu = new VBox(10, btnCars, btnCustomers, btnRentals, btnUsers, btnReports);
         menu.setPadding(new Insets(10));
         menu.setAlignment(Pos.TOP_LEFT);
@@ -46,8 +52,6 @@ public class DashboardView {
         root.setTop(topBar);
         root.setLeft(menu);
         root.setCenter(centerLabel);
-
-        // later: button actions to open other views
     }
 
     public Parent getRoot() {
