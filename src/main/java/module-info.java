@@ -5,5 +5,6 @@ module com.example.carrentalapp {
 
 
     opens com.example.carrentalapp to javafx.fxml;
+    exports com.example.carrentalapp.view;
     exports com.example.carrentalapp;
 }
