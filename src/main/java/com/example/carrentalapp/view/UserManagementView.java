@@ -142,6 +142,8 @@ public class UserManagementView {
             ObservableList<User> data = FXCollections.observableArrayList(users);
             tableView.setItems(data);
             lblMessage.setText("Users loaded: " + users.size());
+        } catch (SecurityException se) {
+            lblMessage.setText(se.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             lblMessage.setText("Error loading users: " + e.getMessage());
@@ -157,6 +159,8 @@ public class UserManagementView {
             loadUsers();
             clearForm();
             lblMessage.setText("User added.");
+        } catch (SecurityException se) {
+            lblMessage.setText(se.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             lblMessage.setText("Error adding user: " + e.getMessage());
@@ -172,6 +176,8 @@ public class UserManagementView {
             loadUsers();
             clearForm();
             lblMessage.setText("User updated.");
+        } catch (SecurityException se) {
+            lblMessage.setText(se.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             lblMessage.setText("Error updating user: " + e.getMessage());
@@ -191,6 +197,8 @@ public class UserManagementView {
             loadUsers();
             clearForm();
             lblMessage.setText("User deleted.");
+        } catch (SecurityException se) {
+            lblMessage.setText(se.getMessage());
         } catch (SQLException e) {
             e.printStackTrace();
             lblMessage.setText("Error deleting user: " + e.getMessage());

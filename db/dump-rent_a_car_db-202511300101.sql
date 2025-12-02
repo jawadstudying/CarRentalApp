@@ -29,6 +29,7 @@ CREATE TABLE `cars` (
   `model` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` smallint NOT NULL,
   `daily_rate` decimal(10,2) NOT NULL,
+  `mileage` int NOT NULL DEFAULT '0',
   `status` enum('AVAILABLE','RENTED','MAINTENANCE') COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`car_id`),
   UNIQUE KEY `license_plate` (`license_plate`)

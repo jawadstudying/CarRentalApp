@@ -138,7 +138,7 @@ public class Rental {
 
     // Helpers
     public boolean isOngoing() {
-        return "ONGOING".equalsIgnoreCase(status);
+        return "ACTIVE".equalsIgnoreCase(status);
     }
 
     public boolean isPaid() {
